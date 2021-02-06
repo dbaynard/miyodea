@@ -1,0 +1,137 @@
+[
+  {
+    "variants": [
+      "Front",
+      "Side",
+      "Back",
+      "Get-ups",
+      "Side rolls",
+      "Side scissors",
+      "Raised arm",
+      "Raised leg"
+    ],
+    "name": "Plank",
+    "targets": [
+      "core",
+      "arms"
+    ]
+  },
+  {
+    "name": "Turkish get-ups",
+    "targets": [
+      "core",
+      "arms",
+      "legs"
+    ]
+  },
+  {
+    "variants": [
+      "Raised-leg",
+      "Side",
+      "Back"
+    ],
+    "name": "Press-ups",
+    "targets": [
+      "arms"
+    ]
+  },
+  {
+    "name": "Swing-dips",
+    "equipment": "Low paralettes",
+    "targets": [
+      "arms",
+      "core"
+    ]
+  },
+  {
+    "name": "Dips",
+    "targets": [
+      "arms"
+    ]
+  },
+  {
+    "variants": [
+      "Vanilla",
+      "Thrusts",
+      "Jumps",
+      "Slow",
+      "One-legged"
+    ],
+    "name": "Squats",
+    "targets": [
+      "legs"
+    ]
+  },
+  {
+    "name": "Roman deadlifts",
+    "equipment": "Kettle bell or disc weight",
+    "targets": [
+      "core"
+    ]
+  },
+  {
+    "variants": [
+      "Forward",
+      "Back",
+      "Jump",
+      "Side"
+    ],
+    "name": "Lunges",
+    "targets": [
+      "legs"
+    ]
+  },
+  {
+    "name": "Land-rowing",
+    "targets": [
+      "core"
+    ]
+  },
+  {
+    "name": "Twists",
+    "targets": [
+      "core"
+    ]
+  },
+  {
+    "name": "Leg raises",
+    "targets": [
+      "core"
+    ]
+  },
+  {
+    "variants": [
+      "Vanilla",
+      "Press-up",
+      "Pull-up",
+      "Tuck"
+    ],
+    "name": "Burpees",
+    "targets": [
+      "legs",
+      "core",
+      "arms"
+    ]
+  },
+  {
+    "variants": [
+      "Upright",
+      "Same side swing down",
+      "Opposite side swing down",
+      "Star jumps"
+    ],
+    "name": "Side-shuffles",
+    "targets": [
+      "legs",
+      "core"
+    ]
+  },
+  {
+    "name": "Around the world",
+    "equipment": "Kettle bell or disc weight",
+    "targets": [
+      "arms",
+      "core"
+    ]
+  }
+]
