@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { Workouts } from "./Workouts";
 
 const App = () => (
   <div className="App">
@@ -10,6 +11,7 @@ const App = () => (
       </h2>
       <p>Who knows one?</p>
     </header>
+    <Workouts />
   </div>
 );
 
