@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DataTable from "react-data-table-component";
 
 import workouts from "./workouts.json";
@@ -27,14 +27,27 @@ const columns = [
   { name: "Equipment", selector: "equipment" },
 ];
 
-const Workouts = () => (
-  <DataTable
-    title="Workouts"
-    columns={columns}
-    data={workouts}
-    keyField="name"
-    striped
-  />
-);
+const Workouts = () => {
+  const [filterText, setFilterText] = useState<string | null>(null);
+
+  const data = workouts.filter(
+    (w) =>
+      !filterText ||
+      [w.name, ...w.targets, ...(w.variants ?? [])].some((t) =>
+        t.toLowerCase().includes(filterText.toLowerCase())
+      )
+  );
+
+  return (
+    <DataTable
+      title="Workouts"
+      columns={columns}
+      data={data}
+      keyField="name"
+      striped
+      subHeader
+    />
+  );
+};
 
 export { Workouts };
