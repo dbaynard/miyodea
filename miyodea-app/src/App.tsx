@@ -1,5 +1,11 @@
 import React from "react";
-import { Tabs, Tab } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useLocation,
+} from "react-router-dom";
 
 import "./App.css";
 
@@ -15,16 +21,39 @@ const Home = () => (
   </header>
 );
 
+const TabNav = () => {
+  const location = useLocation();
+  return (
+    <Nav variant="tabs" activeKey={location?.pathname ?? "/"} as="ul">
+      <Nav.Item as="li">
+        <Nav.Link href="/">Home</Nav.Link>
+      </Nav.Item>
+      <Nav.Item as="li">
+        <Nav.Link eventKey="/workouts" href="/workouts">
+          Workouts
+        </Nav.Link>
+      </Nav.Item>
+    </Nav>
+  );
+};
+
+const Routing = () => (
+  <Switch>
+    <Route exact path="/">
+      <Home />
+    </Route>
+    <Route path="/workouts">
+      <Workouts />
+    </Route>
+  </Switch>
+);
+
 const App = () => (
   <div className="App">
-    <Tabs>
-      <Tab eventKey="home" title="Home">
-        <Home />
-      </Tab>
-      <Tab eventKey="workouts" title="Workouts">
-        <Workouts />
-      </Tab>
-    </Tabs>
+    <Router>
+      <TabNav />
+      <Routing />
+    </Router>
   </div>
 );
 
