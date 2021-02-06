@@ -12,6 +12,15 @@ function readPackage(pkg, context) {
         "@testing-library/dom": "^7.21.4",
       };
       break;
+    case "bootstrap":
+      if pkg.version.startsWith('4.6') {
+      pkg.peerDependencies = {
+        ...pkg.peerDependencies,
+        "jquery": "1.9.1",
+        "popper-js": "^1.16.1",
+      };
+      }
+      break;
   }
 
   return pkg;
