@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { InputGroup, FormControl } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 
 import workouts from "./workouts.json";
@@ -27,6 +28,17 @@ const columns = [
   { name: "Equipment", selector: "equipment" },
 ];
 
+type TextFilterProps = { setFilter: (_: string) => void };
+
+const TextFilter = ({ setFilter }: TextFilterProps) => (
+  <InputGroup>
+    <FormControl
+      placeholder="All"
+      onChange={({ target }) => setFilter(target.value)}
+    />
+  </InputGroup>
+);
+
 const Workouts = () => {
   const [filterText, setFilterText] = useState<string | null>(null);
 
@@ -46,6 +58,7 @@ const Workouts = () => {
       keyField="name"
       striped
       subHeader
+      subHeaderComponent={<TextFilter setFilter={setFilterText} />}
     />
   );
 };
