@@ -1,11 +1,6 @@
-import React from "react";
-import { Nav } from "react-bootstrap";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useLocation,
-} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Tabs, Tab } from "react-bootstrap";
+import { BrowserRouter as Router, useHistory } from "react-router-dom";
 
 import "./App.css";
 
@@ -21,38 +16,30 @@ const Home = () => (
   </header>
 );
 
-const TabNav = () => {
-  const location = useLocation();
+const Tabbed = () => {
+  const history = useHistory();
+  const [key, setKey] = useState<string>(history.location.pathname);
+
+  useEffect(() => {
+    if (history.location.pathname !== key) history.push(key);
+  }, [history, key]);
+
   return (
-    <Nav variant="tabs" activeKey={location?.pathname ?? "/"} as="ul">
-      <Nav.Item as="li">
-        <Nav.Link href="/">Home</Nav.Link>
-      </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link eventKey="/workouts" href="/workouts">
-          Workouts
-        </Nav.Link>
-      </Nav.Item>
-    </Nav>
+    <Tabs activeKey={key} onSelect={(k) => setKey(k ?? "/")}>
+      <Tab eventKey="/" title="Home">
+        <Home />
+      </Tab>
+      <Tab eventKey="/workouts" title="Workouts">
+        <Workouts />
+      </Tab>
+    </Tabs>
   );
 };
-
-const Routing = () => (
-  <Switch>
-    <Route exact path="/">
-      <Home />
-    </Route>
-    <Route path="/workouts">
-      <Workouts />
-    </Route>
-  </Switch>
-);
 
 const App = () => (
   <div className="App">
     <Router>
-      <TabNav />
-      <Routing />
+      <Tabbed />
     </Router>
   </div>
 );
