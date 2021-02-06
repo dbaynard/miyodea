@@ -11,7 +11,7 @@ type Workout = {
 };
 
 const columns = [
-  { name: "Workout", selector: "name" },
+  { name: "Workout", selector: "name", sortable: true },
   {
     name: "Targets",
     selector: "targets",
