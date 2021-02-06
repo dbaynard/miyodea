@@ -28,25 +28,31 @@ const columns = [
   { name: "Equipment", selector: "equipment" },
 ];
 
-type TextFilterProps = { setFilter: (_: string) => void };
+type Filter = { text?: string };
 
-const TextFilter = ({ setFilter }: TextFilterProps) => (
+type StateSetter<T> = React.Dispatch<React.SetStateAction<T>>;
+
+type FilterProps = { setFilter: StateSetter<Filter> };
+
+const TextFilter = ({ setFilter }: FilterProps) => (
   <InputGroup>
     <FormControl
       placeholder="All"
-      onChange={({ target }) => setFilter(target.value)}
+      onChange={({ target }) =>
+        setFilter((f: Filter) => ({ ...f, text: target.value }))
+      }
     />
   </InputGroup>
 );
 
 const Workouts = () => {
-  const [filterText, setFilterText] = useState<string | null>(null);
+  const [filter, setFilter] = useState<Filter>({});
 
   const data = workouts.filter(
     (w) =>
-      !filterText ||
+      !filter.text ||
       [w.name, ...w.targets, ...(w.variants ?? [])].some((t) =>
-        t.toLowerCase().includes(filterText.toLowerCase())
+        t.toLowerCase().includes(filter?.text?.toLowerCase() ?? "")
       )
   );
 
@@ -58,7 +64,7 @@ const Workouts = () => {
       keyField="name"
       striped
       subHeader
-      subHeaderComponent={<TextFilter setFilter={setFilterText} />}
+      subHeaderComponent={<TextFilter {...{ setFilter }} />}
     />
   );
 };
