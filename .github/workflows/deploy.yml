@@ -15,6 +15,11 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Install SSH Client 🔑
+        uses: webfactory/ssh-agent@ee29fafb6aa450493bac9136b346e51ea60a8b5e
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
       - name: Setup Node.js ${{ matrix.node-version }}.x
         uses: actions/setup-node@v2
         with:
@@ -47,7 +52,7 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@132898c54c57c7cc6b80eb3a89968de8fc283505
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SSH: true
           BRANCH: production
           FOLDER: build
           CLEAN: true
