@@ -1,7 +1,7 @@
 import React from "react";
 import { Badge, ListGroup } from "react-bootstrap";
 
-import workouts from "./workouts.json";
+import { Workout } from "./Workouts";
 
 type EntryProps = { n: number; name: string };
 
@@ -11,7 +11,9 @@ const Entry = ({ n, name }: EntryProps) => (
   </ListGroup.Item>
 );
 
-const Routine = () => (
+export type RoutineProps = { workouts: Workout[] };
+
+const Routine = ({ workouts }: RoutineProps) => (
   <ListGroup as="ol">
     {workouts
       .map(({ name }, n) => <Entry n={n + 1} {...{ name }} />)
