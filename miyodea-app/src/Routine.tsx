@@ -98,7 +98,7 @@ const Routine = ({ workouts }: RoutineProps) => {
                 htmlSize={10}
                 onChange={({ target }) => {
                   const i = Number.parseInt(target?.value);
-                  isNaN(i) ? setSeed(seedrandom().int32()) : setSeed(i);
+                  isNaN(i) ? setSeed(rng.int32()) : setSeed(i);
                 }}
               />
             </InputGroup>
