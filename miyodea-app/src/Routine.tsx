@@ -12,11 +12,27 @@ import seedrandom from "seedrandom";
 
 import { Workout } from "./Workouts";
 
-type EntryProps = { rounds: number; n: number; name: string };
+type EntryProps = {
+  rounds: number;
+  n: number;
+  name: string;
+  variants?: string[];
+  rng?: () => number;
+};
 
-const Entry = ({ rounds, n, name }: EntryProps) => (
+const pickRandomly = <T,>(xs: T[], rng = Math.random): T | null =>
+  xs.reduce(
+    ({ acc, w }: { acc: number; w: T | null }, v) => {
+      const r = rng();
+      return r > acc ? { acc: r, w: v } : { acc, w };
+    },
+    { acc: 0, w: null }
+  ).w;
+
+const Entry = ({ rounds, n, name, variants, rng }: EntryProps) => (
   <ListGroup.Item>
-    <Badge variant="primary">{n}</Badge> {name}{" "}
+    <Badge variant="primary">{n}</Badge> {name}
+    {variants ? ` (${pickRandomly(variants, rng)}) ` : " "}
     <Badge variant="light">×{n * (rounds + 1 - n)}</Badge>
   </ListGroup.Item>
 );
@@ -43,7 +59,7 @@ const Routine = ({ workouts }: RoutineProps) => {
   const entries = shuffle(workouts, rng)
     .slice(0, rounds - 1)
     .flatMap((x, n) => (n === 0 ? [{ name: "Plank" }, x] : x))
-    .map(({ name }, n) => <Entry n={n + 1} {...{ name, rounds }} />);
+    .map((props, n) => <Entry n={n + 1} {...{ ...props, rounds }} />);
 
   return (
     <Container>
