@@ -5,6 +5,7 @@ import { BrowserRouter as Router, useHistory } from "react-router-dom";
 import "./App.css";
 
 import { Workouts } from "./Workouts";
+import { Routine } from "./Routine";
 
 const Home = () => (
   <header className="App-header">
@@ -28,6 +29,9 @@ const Tabbed = () => {
     <Tabs activeKey={key} onSelect={(k) => setKey(k ?? "/")}>
       <Tab eventKey="/" title="Home">
         <Home />
+      </Tab>
+      <Tab eventKey="/routine" title="Routine">
+        <Routine />
       </Tab>
       <Tab eventKey="/workouts" title="Workouts">
         <Workouts />
