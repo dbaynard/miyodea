@@ -22,7 +22,7 @@ const columns = [
     selector: "variants",
     format: (row: Workout) => row.variants?.join(", "),
     wrap: true,
-    style: { textAlign: "left" },
+    style: { textAlign: "left" } as const,
   },
   { name: "Equipment", selector: "equipment" },
 ];
