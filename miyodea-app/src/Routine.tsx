@@ -7,7 +7,8 @@ type EntryProps = { n: number; name: string };
 
 const Entry = ({ n, name }: EntryProps) => (
   <ListGroup.Item>
-    <Badge variant="primary">{n}</Badge> {name}
+    <Badge variant="primary">{n}</Badge> {name}{" "}
+    <Badge variant="light">×{n * (13 - n)}</Badge>
   </ListGroup.Item>
 );
 
