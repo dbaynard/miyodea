@@ -1,5 +1,13 @@
 import React from "react";
-import { Container, Badge, ListGroup } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  Container,
+  Badge,
+  ListGroup,
+  InputGroup,
+  FormControl,
+} from "react-bootstrap";
 
 import { Workout } from "./Workouts";
 
@@ -17,13 +25,31 @@ export type RoutineProps = { workouts: Workout[] };
 const Routine = ({ workouts }: RoutineProps) => (
   <Container>
     <header>
-      <h1>Routine</h1>
+      <Row>
+        <Col>
+          <h1>Routine</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col md="auto">
+          <InputGroup>
+            <InputGroup.Prepend>
+              <InputGroup.Text>#</InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl placeholder="12" htmlSize={2} />
+          </InputGroup>
+        </Col>
+      </Row>
     </header>
-    <ListGroup as="ol">
-      {workouts
-        .map(({ name }, n) => <Entry n={n + 1} {...{ name }} />)
-        .slice(0, 12)}
-    </ListGroup>
+    <Row>
+      <Col>
+        <ListGroup as="ol">
+          {workouts
+            .map(({ name }, n) => <Entry n={n + 1} {...{ name }} />)
+            .slice(0, 12)}
+        </ListGroup>
+      </Col>
+    </Row>
   </Container>
 );
 
