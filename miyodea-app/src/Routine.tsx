@@ -8,6 +8,7 @@ import {
   InputGroup,
   FormControl,
 } from "react-bootstrap";
+import seedrandom from "seedrandom";
 
 import { Workout } from "./Workouts";
 
@@ -24,8 +25,24 @@ export type RoutineProps = { workouts: Workout[] };
 
 const defaultRounds = 12;
 
+const shuffle = <T,>(input: T[], rng = Math.random) => {
+  const o = [...input];
+  for (
+    var j, x, i = o.length;
+    i;
+    j = Math.floor(rng() * i), x = o[--i], o[i] = o[j], o[j] = x
+  );
+  return o;
+};
+
 const Routine = ({ workouts }: RoutineProps) => {
   const [rounds, setRounds] = useState<number>(defaultRounds);
+  const [seed, setSeed] = useState<number>(seedrandom().int32());
+
+  const rng = seedrandom(seed.toString());
+  const entries = shuffle(workouts, rng)
+    .slice(0, rounds)
+    .map(({ name }, n) => <Entry n={n + 1} {...{ name, rounds }} />);
 
   return (
     <Container>
@@ -51,15 +68,26 @@ const Routine = ({ workouts }: RoutineProps) => {
               />
             </InputGroup>
           </Col>
+          <Col md="auto">
+            <InputGroup>
+              <InputGroup.Prepend>
+                <InputGroup.Text>Seed</InputGroup.Text>
+              </InputGroup.Prepend>
+              <FormControl
+                placeholder={seed?.toString() ?? ""}
+                htmlSize={10}
+                onChange={({ target }) => {
+                  const i = Number.parseInt(target?.value);
+                  isNaN(i) ? setSeed(seedrandom().int32()) : setSeed(i);
+                }}
+              />
+            </InputGroup>
+          </Col>
         </Row>
       </header>
       <Row>
         <Col>
-          <ListGroup as="ol">
-            {workouts
-              .map(({ name }, n) => <Entry n={n + 1} {...{ name, rounds }} />)
-              .slice(0, rounds)}
-          </ListGroup>
+          <ListGroup as="ol">{entries}</ListGroup>
         </Col>
       </Row>
     </Container>
