@@ -89,7 +89,9 @@ const Routine = ({ workouts }: RoutineProps) => {
           <Col md="auto">
             <InputGroup>
               <InputGroup.Prepend>
-                <InputGroup.Text>Seed</InputGroup.Text>
+                <InputGroup.Text onClick={() => setSeed(rng.int32())}>
+                  Seed
+                </InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
                 placeholder={seed?.toString() ?? ""}
