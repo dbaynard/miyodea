@@ -7,6 +7,8 @@ import "./App.css";
 import { Workouts } from "./Workouts";
 import { Routine } from "./Routine";
 
+import workouts from "./workouts.json";
+
 const Home = () => (
   <header className="App-header">
     <h1>Mi Yodea</h1>
@@ -31,10 +33,10 @@ const Tabbed = () => {
         <Home />
       </Tab>
       <Tab eventKey="/routine" title="Routine">
-        <Routine />
+        <Routine {...{ workouts }} />
       </Tab>
       <Tab eventKey="/workouts" title="Workouts">
-        <Workouts />
+        <Workouts {...{ workouts }} />
       </Tab>
     </Tabs>
   );

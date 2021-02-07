@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { InputGroup, FormControl } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 
-import workouts from "./workouts.json";
-
-type Workout = {
+export type Workout = {
   name: string;
   targets: string[];
   variants?: string[];
@@ -45,7 +43,9 @@ const TextFilter = ({ setFilter }: FilterProps) => (
   </InputGroup>
 );
 
-const Workouts = () => {
+type WorkoutsProps = { workouts: Workout[] };
+
+const Workouts = ({ workouts }: WorkoutsProps) => {
   const [filter, setFilter] = useState<Filter>({});
 
   const data = workouts.filter(
