@@ -54,5 +54,5 @@ jobs:
         with:
           SSH: true
           BRANCH: production
-          FOLDER: build
+          FOLDER: miyodea-app/build
           CLEAN: true
