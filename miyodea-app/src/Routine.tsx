@@ -41,7 +41,8 @@ const Routine = ({ workouts }: RoutineProps) => {
 
   const rng = seedrandom(seed.toString());
   const entries = shuffle(workouts, rng)
-    .slice(0, rounds)
+    .slice(0, rounds - 1)
+    .flatMap((x, n) => (n === 0 ? [{ name: "Plank" }, x] : x))
     .map(({ name }, n) => <Entry n={n + 1} {...{ name, rounds }} />);
 
   return (
