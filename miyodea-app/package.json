@@ -57,11 +57,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "styled-components": "^5.2.1"
-  },
-  "peerDependencies": {
-    "styled-components": "^5.2.1"
   }
 }
