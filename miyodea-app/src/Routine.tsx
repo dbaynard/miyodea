@@ -60,7 +60,13 @@ const Routine = ({ workouts }: RoutineProps) => {
   const entries = shuffle(viable, rng)
     .slice(0, rounds - 1)
     .flatMap((x, n) => (n === 0 ? [{ name: "Plank" }, x] : x))
-    .map((props, n) => <Entry n={n + 1} {...{ ...props, rounds, rng }} />);
+    .map((props, n) => (
+      <Entry
+        key={`${n}-${props.name}}}`}
+        n={n + 1}
+        {...{ ...props, rounds, rng }}
+      />
+    ));
 
   return (
     <Container>
