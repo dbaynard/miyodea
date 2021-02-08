@@ -32,7 +32,7 @@ jobs:
 
       - uses: pnpm/action-setup@8e1abe543ff1fa17b5d36e08ed01b4a1e4c31eb4
         with:
-          version: 4.11.1
+          version: 5.17
           run_install: |
             - recursive: true
               args: [--frozen-lockfile]
