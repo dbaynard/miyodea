@@ -38,7 +38,7 @@ const Tabbed = () => {
 
 const App = () => (
   <div className="App">
-    <Router>
+    <Router basename={`${process.env.NODE_ENV === "test" ? "" : "/miyodea"}`}>
       <Tabbed />
     </Router>
   </div>
