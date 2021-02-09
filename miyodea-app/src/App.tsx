@@ -7,10 +7,10 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 import "./App.css";
 
-import { Workouts } from "./Workouts";
+import { Workouts, Workout } from "./Workouts";
 import { Routine } from "./Routine";
 
-import workouts from "./workouts.json";
+import defaultWorkouts from "./workouts.json";
 
 const Home = () => (
   <header className="App-header">
@@ -28,6 +28,7 @@ const Home = () => (
 const Tabbed = () => {
   const history = useHistory();
   const [key, setKey] = useState<string>(history.location.pathname);
+  const [workouts, setWorkouts] = useState<Workout[]>(defaultWorkouts);
 
   useEffect(() => {
     if (history.location.pathname !== key) history.push(key);
