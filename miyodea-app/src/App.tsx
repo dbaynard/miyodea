@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Tabs, Tab } from "react-bootstrap";
+import { Button, Tabs, Tab } from "react-bootstrap";
 import { BrowserRouter as Router, useHistory } from "react-router-dom";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 import "./App.css";
 
@@ -16,6 +19,9 @@ const Home = () => (
       <i>a.k.a.</i> 12 Days of Christmas workout
     </h2>
     <p>Who knows one?</p>
+    <Button variant="secondary" href="https://github.com/dbaynard/miyodea">
+      <FontAwesomeIcon icon={faGithub} />
+    </Button>
   </header>
 );
 
