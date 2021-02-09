@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Tabs, Tab } from "react-bootstrap";
 import { BrowserRouter as Router, useHistory } from "react-router-dom";
+import createPersistedState from "use-persisted-state";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -25,12 +26,12 @@ const Home = () => (
   </header>
 );
 
+const useWorkouts = createPersistedState("workouts-0");
+
 const Tabbed = () => {
   const history = useHistory();
   const [key, setKey] = useState<string>(history.location.pathname);
-  const [workouts, setWorkouts] = useState<Workout[]>(
-    defaultWorkouts as Workout[]
-  );
+  const [workouts, setWorkouts] = useWorkouts(defaultWorkouts as Workout[]);
 
   useEffect(() => {
     if (history.location.pathname !== key) history.push(key);
