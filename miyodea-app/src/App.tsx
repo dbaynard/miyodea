@@ -28,7 +28,9 @@ const Home = () => (
 const Tabbed = () => {
   const history = useHistory();
   const [key, setKey] = useState<string>(history.location.pathname);
-  const [workouts, setWorkouts] = useState<Workout[]>(defaultWorkouts);
+  const [workouts, setWorkouts] = useState<Workout[]>(
+    defaultWorkouts as Workout[]
+  );
 
   useEffect(() => {
     if (history.location.pathname !== key) history.push(key);

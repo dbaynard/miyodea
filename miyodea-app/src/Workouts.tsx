@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { InputGroup, FormControl } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 
+type Target = "core" | "arms" | "legs";
+
 export type Workout = {
   name: string;
-  targets: string[];
+  targets: Target[];
   variants?: string[];
   equipment?: string;
 };
