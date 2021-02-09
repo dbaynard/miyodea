@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { InputGroup, FormControl } from "react-bootstrap";
+import { Badge, InputGroup, FormControl } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 
 type Target = "core" | "arms" | "legs";
@@ -16,7 +16,12 @@ const columns = [
   {
     name: "Targets",
     selector: "targets",
-    format: (row: Workout) => row.targets.join(", "),
+    format: (row: Workout) =>
+      row.targets.map((v) => (
+        <Badge key={v} pill variant="info">
+          {v}
+        </Badge>
+      )),
   },
   {
     name: "Variants",
