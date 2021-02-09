@@ -27,6 +27,10 @@ const Tabbed = () => {
     if (history.location.pathname !== key) history.push(key);
   }, [history, key]);
 
+  useEffect(() => history.listen((location) => setKey(location.pathname)), [
+    history,
+  ]);
+
   return (
     <Tabs activeKey={key} onSelect={(k) => setKey(k ?? "/")}>
       <Tab eventKey="/" title="Home">
