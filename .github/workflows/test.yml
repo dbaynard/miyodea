@@ -37,13 +37,13 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile]
 
-      - name: Test 🔧
-        run: |
-          pnpm -C miyodea-app run test
-
       - name: Build 🔧
         run: |
           pnpm -C miyodea-app run build
+
+      - name: Test 🔧
+        run: |
+          pnpm -C miyodea-app run test
 
       - name: Upload build artifact 🚀
         uses: actions/upload-artifact@v2
