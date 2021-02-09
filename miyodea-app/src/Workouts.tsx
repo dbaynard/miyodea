@@ -43,7 +43,10 @@ const TextFilter = ({ setFilter }: FilterProps) => (
   </InputGroup>
 );
 
-type WorkoutsProps = { workouts: Workout[] };
+type WorkoutsProps = {
+  workouts: Workout[];
+  setWorkouts: StateSetter<Workout[]>;
+};
 
 const Workouts = ({ workouts }: WorkoutsProps) => {
   const [filter, setFilter] = useState<Filter>({});

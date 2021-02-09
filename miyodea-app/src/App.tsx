@@ -47,7 +47,7 @@ const Tabbed = () => {
         <Routine {...{ workouts }} />
       </Tab>
       <Tab eventKey="/workouts" title="Workouts">
-        <Workouts {...{ workouts }} />
+        <Workouts {...{ workouts, setWorkouts }} />
       </Tab>
     </Tabs>
   );
