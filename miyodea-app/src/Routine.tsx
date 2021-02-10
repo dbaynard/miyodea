@@ -88,7 +88,8 @@ const Routine = ({ workouts }: RoutineProps) => {
                 <InputGroup.Text>#</InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
-                placeholder="12"
+                defaultValue={rounds}
+                placeholder={defaultRounds.toString()}
                 type="number"
                 htmlSize={2}
                 onChange={({ target }) =>
@@ -111,7 +112,7 @@ const Routine = ({ workouts }: RoutineProps) => {
                 <InputGroup.Text>Seed</InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
-                placeholder={seed?.toString() ?? ""}
+                value={seed?.toString() ?? ""}
                 type="number"
                 htmlSize={10}
                 onChange={({ target }) => {
