@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/miyodea/static/css/main.8c8b27cf.chunk.css",
-    "main.js": "/miyodea/static/js/main.4b238e03.chunk.js",
-    "main.js.map": "/miyodea/static/js/main.4b238e03.chunk.js.map",
+    "main.js": "/miyodea/static/js/main.f44fe218.chunk.js",
+    "main.js.map": "/miyodea/static/js/main.f44fe218.chunk.js.map",
     "runtime-main.js": "/miyodea/static/js/runtime-main.5eca2f76.js",
     "runtime-main.js.map": "/miyodea/static/js/runtime-main.5eca2f76.js.map",
     "static/css/2.96ada6de.chunk.css": "/miyodea/static/css/2.96ada6de.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.96ada6de.chunk.css",
     "static/js/2.434ca2e6.chunk.js",
     "static/css/main.8c8b27cf.chunk.css",
-    "static/js/main.4b238e03.chunk.js"
+    "static/js/main.f44fe218.chunk.js"
   ]
 }
