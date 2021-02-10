@@ -8,7 +8,8 @@
       "Side rolls",
       "Side scissors",
       "Raised arm",
-      "Raised leg"
+      "Raised leg",
+      "Swimmer"
     ],
     "name": "Plank",
     "targets": [
@@ -28,6 +29,7 @@
     "variants": [
       "Raised-leg",
       "Side",
+      "Crawl-out",
       "Back"
     ],
     "name": "Press-ups",
@@ -54,8 +56,9 @@
       "Vanilla",
       "Thrusts",
       "Jumps",
-      "Slow",
-      "One-legged"
+      "Slow/Eccentric",
+      "Pistol/One-legged",
+      "Bulgarian split"
     ],
     "name": "Squats",
     "targets": [
@@ -73,7 +76,7 @@
     "variants": [
       "Forward",
       "Back",
-      "Jump",
+      "Jump/Pylo",
       "Side"
     ],
     "name": "Lunges",
@@ -82,7 +85,7 @@
     ]
   },
   {
-    "name": "Land-rowing",
+    "name": "Land-rows",
     "targets": [
       "core"
     ]
@@ -97,6 +100,10 @@
     "name": "Leg raises",
     "targets": [
       "core"
+    ],
+    "variants": [
+      "Hold",
+      "Lifts"
     ]
   },
   {
@@ -120,17 +127,109 @@
       "Opposite side swing down",
       "Star jumps"
     ],
-    "name": "Side-shuffles",
+    "name": "Skaters",
     "targets": [
       "legs",
       "core"
     ]
   },
   {
-    "name": "Around the world",
+    "name": "Around-the-worlds",
     "equipment": "Kettle bell or disc weight",
     "targets": [
       "arms",
+      "core"
+    ]
+  },
+  {
+    "name": "Calf raises",
+    "equipment": "Step",
+    "targets": [
+      "legs"
+    ],
+    "variants": [
+      "Straight-leg",
+      "Bent-knee",
+      "Heel drop",
+      "Eccentric"
+    ]
+  },
+  {
+    "name": "Mountain climbers",
+    "targets": [
+      "legs",
+      "core"
+    ]
+  },
+  {
+    "name": "Crunches",
+    "targets": [
+      "core"
+    ],
+    "variants": [
+      "Bicycle"
+    ]
+  },
+  {
+    "name": "Windscreen wiper",
+    "targets": [
+      "core"
+    ]
+  },
+  {
+    "name": "Bridges",
+    "targets": [
+      "core"
+    ],
+    "variants": [
+      "Glute",
+      "Shoulder",
+      "Leg raise"
+    ]
+  },
+  {
+    "name": "Supermen",
+    "targets": [
+      "core"
+    ]
+  },
+  {
+    "name": "Scorpion",
+    "targets": [
+      "core"
+    ],
+    "variants": [
+      "Fixed",
+      "Roll",
+      "Jump"
+    ]
+  },
+  {
+    "name": "Chameleon bounces",
+    "targets": [
+      "core",
+      "arms",
+      "legs"
+    ]
+  },
+  {
+    "name": "Bear crab roll",
+    "targets": [
+      "core",
+      "arms",
+      "legs"
+    ]
+  },
+  {
+    "name": "Monkey roll",
+    "targets": [
+      "core",
+      "arms"
+    ]
+  },
+  {
+    "name": "Bird dogs",
+    "targets": [
       "core"
     ]
   }
