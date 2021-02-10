@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Button,
   Col,
   Row,
   Container,
@@ -94,14 +95,20 @@ const Routine = ({ workouts }: RoutineProps) => {
                   setRounds(Number.parseInt(target?.value) || defaultRounds)
                 }
               />
+              <InputGroup.Append>
+                <Button
+                  variant="outline-primary"
+                  onClick={() => setRounds(defaultRounds)}
+                >
+                  Reset
+                </Button>
+              </InputGroup.Append>
             </InputGroup>
           </Col>
           <Col md="auto">
             <InputGroup>
               <InputGroup.Prepend>
-                <InputGroup.Text onClick={() => setSeed(rng.int32())}>
-                  Seed
-                </InputGroup.Text>
+                <InputGroup.Text>Seed</InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
                 placeholder={seed?.toString() ?? ""}
@@ -112,6 +119,14 @@ const Routine = ({ workouts }: RoutineProps) => {
                   isNaN(i) ? setSeed(rng.int32()) : setSeed(i);
                 }}
               />
+              <InputGroup.Append>
+                <Button
+                  variant="outline-primary"
+                  onClick={() => setSeed(rng.int32())}
+                >
+                  Randomize
+                </Button>
+              </InputGroup.Append>
             </InputGroup>
           </Col>
         </Row>
