@@ -85,6 +85,7 @@ const Routine = ({ workouts }: RoutineProps) => {
               </InputGroup.Prepend>
               <FormControl
                 placeholder="12"
+                type="number"
                 htmlSize={2}
                 onChange={({ target }) =>
                   setRounds(Number.parseInt(target?.value) || defaultRounds)
@@ -101,6 +102,7 @@ const Routine = ({ workouts }: RoutineProps) => {
               </InputGroup.Prepend>
               <FormControl
                 placeholder={seed?.toString() ?? ""}
+                type="number"
                 htmlSize={10}
                 onChange={({ target }) => {
                   const i = Number.parseInt(target?.value);
