@@ -82,7 +82,7 @@
     ]
   },
   {
-    "name": "Land-rowing",
+    "name": "Land-rows",
     "targets": [
       "core"
     ]
@@ -127,7 +127,7 @@
     ]
   },
   {
-    "name": "Around the world",
+    "name": "Around-the-worlds",
     "equipment": "Kettle bell or disc weight",
     "targets": [
       "arms",
