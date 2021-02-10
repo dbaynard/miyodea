@@ -140,5 +140,97 @@
       "arms",
       "core"
     ]
+  },
+  {
+    "name": "Calf raises",
+    "equipment": "Step",
+    "targets": [
+      "legs"
+    ],
+    "variants": [
+      "Straight-leg",
+      "Bent-knee",
+      "Heel drop",
+      "Eccentric"
+    ]
+  },
+  {
+    "name": "Mountain climbers",
+    "targets": [
+      "legs",
+      "core"
+    ]
+  },
+  {
+    "name": "Crunches",
+    "targets": [
+      "core"
+    ],
+    "variants": [
+      "Bicycle"
+    ]
+  },
+  {
+    "name": "Windscreen wiper",
+    "targets": [
+      "core"
+    ]
+  },
+  {
+    "name": "Bridges",
+    "targets": [
+      "core"
+    ],
+    "variants": [
+      "Glute",
+      "Shoulder",
+      "Leg raise"
+    ]
+  },
+  {
+    "name": "Supermen",
+    "targets": [
+      "core"
+    ]
+  },
+  {
+    "name": "Scorpion",
+    "targets": [
+      "core"
+    ],
+    "variants": [
+      "Fixed",
+      "Roll",
+      "Jump"
+    ]
+  },
+  {
+    "name": "Chameleon bounces",
+    "targets": [
+      "core",
+      "arms",
+      "legs"
+    ]
+  },
+  {
+    "name": "Bear crab roll",
+    "targets": [
+      "core",
+      "arms",
+      "legs"
+    ]
+  },
+  {
+    "name": "Monkey roll",
+    "targets": [
+      "core",
+      "arms"
+    ]
+  },
+  {
+    "name": "Bird dogs",
+    "targets": [
+      "core"
+    ]
   }
 ]
