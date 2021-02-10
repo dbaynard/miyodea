@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Col,
   Row,
@@ -9,6 +9,7 @@ import {
   FormControl,
 } from "react-bootstrap";
 import seedrandom from "seedrandom";
+import createPersistedState from "use-persisted-state";
 
 import { Workout } from "./Workouts";
 
@@ -37,10 +38,6 @@ const Entry = ({ rounds, n, name, variants, rng }: EntryProps) => (
   </ListGroup.Item>
 );
 
-export type RoutineProps = { workouts: Workout[] };
-
-const defaultRounds = 12;
-
 const shuffle = <T,>(input: T[], rng = Math.random) => {
   const o = [...input];
   for (
@@ -51,9 +48,15 @@ const shuffle = <T,>(input: T[], rng = Math.random) => {
   return o;
 };
 
+export type RoutineProps = { workouts: Workout[] };
+
+const defaultRounds = 12;
+const useRounds = createPersistedState("rounds-0");
+const useSeed = createPersistedState("seed-0");
+
 const Routine = ({ workouts }: RoutineProps) => {
-  const [rounds, setRounds] = useState<number>(defaultRounds);
-  const [seed, setSeed] = useState<number>(seedrandom().int32());
+  const [rounds, setRounds] = useRounds<number>(defaultRounds);
+  const [seed, setSeed] = useSeed<number>(seedrandom().int32());
 
   const rng = seedrandom(seed.toString());
   const viable = workouts.filter((w) => !w.equipment);
