@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import {
+  Button,
   Col,
   Row,
   Container,
@@ -9,6 +10,7 @@ import {
   FormControl,
 } from "react-bootstrap";
 import seedrandom from "seedrandom";
+import createPersistedState from "use-persisted-state";
 
 import { Workout } from "./Workouts";
 
@@ -37,10 +39,6 @@ const Entry = ({ rounds, n, name, variants, rng }: EntryProps) => (
   </ListGroup.Item>
 );
 
-export type RoutineProps = { workouts: Workout[] };
-
-const defaultRounds = 12;
-
 const shuffle = <T,>(input: T[], rng = Math.random) => {
   const o = [...input];
   for (
@@ -51,14 +49,20 @@ const shuffle = <T,>(input: T[], rng = Math.random) => {
   return o;
 };
 
+export type RoutineProps = { workouts: Workout[] };
+
+const defaultRounds = 12;
+const useRounds = createPersistedState("rounds-0");
+const useSeed = createPersistedState("seed-0");
+
 const Routine = ({ workouts }: RoutineProps) => {
-  const [rounds, setRounds] = useState<number>(defaultRounds);
-  const [seed, setSeed] = useState<number>(seedrandom().int32());
+  const [rounds, setRounds] = useRounds<number>(defaultRounds);
+  const [seed, setSeed] = useSeed<number>(seedrandom().int32());
 
   const rng = seedrandom(seed.toString());
   const viable = workouts.filter((w) => !w.equipment);
   const entries = shuffle(viable, rng)
-    .slice(0, rounds - 1)
+    .slice(0, Math.max(rounds - 1, 0))
     .flatMap((x, n) => (n === 0 ? [{ name: "Plank" }, x] : x))
     .map((props, n) => (
       <Entry
@@ -84,29 +88,46 @@ const Routine = ({ workouts }: RoutineProps) => {
                 <InputGroup.Text>#</InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
-                placeholder="12"
+                defaultValue={rounds}
+                placeholder={defaultRounds.toString()}
+                type="number"
                 htmlSize={2}
                 onChange={({ target }) =>
                   setRounds(Number.parseInt(target?.value) || defaultRounds)
                 }
               />
+              <InputGroup.Append>
+                <Button
+                  variant="outline-primary"
+                  onClick={() => setRounds(defaultRounds)}
+                >
+                  Reset
+                </Button>
+              </InputGroup.Append>
             </InputGroup>
           </Col>
           <Col md="auto">
             <InputGroup>
               <InputGroup.Prepend>
-                <InputGroup.Text onClick={() => setSeed(rng.int32())}>
-                  Seed
-                </InputGroup.Text>
+                <InputGroup.Text>Seed</InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
-                placeholder={seed?.toString() ?? ""}
+                value={seed?.toString() ?? ""}
+                type="number"
                 htmlSize={10}
                 onChange={({ target }) => {
                   const i = Number.parseInt(target?.value);
                   isNaN(i) ? setSeed(rng.int32()) : setSeed(i);
                 }}
               />
+              <InputGroup.Append>
+                <Button
+                  variant="outline-primary"
+                  onClick={() => setSeed(rng.int32())}
+                >
+                  Randomize
+                </Button>
+              </InputGroup.Append>
             </InputGroup>
           </Col>
         </Row>
